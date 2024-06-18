@@ -13,7 +13,7 @@ for file in files:
             title = re.findall("title: (.+)",file_str)
             tags = re.findall("tags: \[(.+)\]",file_str)[0].split(",")
             for t in tags:
-                tags_map[t] = tags_map.setdefault(t,0) + 1
+                tags_map[t.lower()] = tags_map.setdefault(t.lower(), 0) + 1
             desc = re.findall("> (.+)",file_str)
         url = f'/blog{"/".join(name[:3])}/{"-".join(name[3:])}'
         blogs.append({
@@ -25,7 +25,7 @@ blogs.sort(key=lambda x:x["url"],reverse=True)
 tags = [(k,v) for k,v in tags_map.items()]
 tags.sort(key=lambda k:k[1],reverse=True)
 import json
-js_str = f'''const recentPost={json.dumps({"blogs":blogs,"tags":tags})};
+js_str = f'''const recentPost={json.dumps({"blogs":blogs[:10],"tags":tags})};
 export default recentPost; '''
 with open("../src/components/HomepageFeatures/recentPost.js","w") as f:
     f.write(js_str)

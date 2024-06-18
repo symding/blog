@@ -11,7 +11,7 @@ const config = {
   title: 'Symding',
   tagline: 'fmt.Println("hello world.")',
   favicon: 'img/favicon.ico',
-  plugins: ["@orama/plugin-docusaurus-v3"],
+  plugins: [require.resolve('docusaurus-lunr-search')],
   // Set the production url of your site here
   url: 'https://blog.yuanding.fun',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -75,10 +75,8 @@ const config = {
         },
         items: [
           { to: '/blog', label: 'Blog', position: 'left' },
-          // { to: '/docs/intro', label: 'Doc', position: 'left' },
-          // { to: '/bug/intro', label: 'Bug', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/symding',
             label: 'GitHub',
             position: 'right',
           },
@@ -89,7 +87,7 @@ const config = {
       },
       prism: {
           additionalLanguages: ['java','Go'],
-        theme: prismThemes.github,
+          theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
     }),

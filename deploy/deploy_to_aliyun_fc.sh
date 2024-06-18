@@ -1,5 +1,5 @@
 # /bin/bash
-python3 collect_post.sh
+python3 collect_post.py
 cd ..
 rm -rf ./build
 npm run build

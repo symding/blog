@@ -3,13 +3,12 @@ import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
 import recentPost from './recentPost';
-import { Button } from 'antd';
 
 
 function Feature({url, title, desc}) {
   return (
-    <div style={{width:"100%",marginBottom:20}}>
-      <Link to={url}><h3>{title}</h3></Link>
+    <div style={{width:"100%",marginBottom:40}}>
+      <Link to={url}><h2>{title}</h2></Link>
       <p>{ desc}</p>
     </div>
   );
@@ -20,8 +19,8 @@ export default function HomepageFeatures() {
     <div>
       <section className={styles.features}>
         <div className="container" style={{paddingLeft:12}}>
-          <span style={{ fontWeight: 600 }}>分类</span>:&nbsp;&nbsp;{recentPost.tags.map((props, idx) => (
-            <Button style={{ padding: 5, marginRight: 10, borderRadius: 5 ,color:"green"}} type="link"><Link to={`/blog/tags/${props[0]}`}>{props[0]}({props[1]})</Link></Button>
+          <span class="" style={{ fontWeight: 600 }}>分类</span>:&nbsp;&nbsp;{recentPost.tags.map((props, idx) => (
+            <Link to={`/blog/tags/${props[0]}`} className={styles.tag}>{props[0]}<strong style={{ marginLeft: 5}}>{props[1]}</strong></Link>
           ))
           }
         </div>
